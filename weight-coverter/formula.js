@@ -9,13 +9,13 @@ class Formula {
 
         switch(this.formula) {
             case 'kg-to-lbs':
-                formula = value + 2.2;
-                formulaText = 'This is kg to lbs';
+                formula = parseFloat(value * 2.20462262185).toFixed(2);
+                formulaText = '1 kg = 2.20462262185 lb';
                 break;
         }
 
         document.querySelector('.results').innerHTML = `
-            <input class="form-control" type="text" disabled value="${formula}"/>
+            <input class="form-control mb-1" type="text" disabled value="${formula}"/>
             <p>${formulaText}</p>
         `
     }
