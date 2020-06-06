@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weight Converter</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body style="background-color:#f4f4f4;">
+<div class="container">
+    <div class="row flex-wrap justify-content-center">
+        <div class="col-md-8 mt-3">
+            <h1 class="w-100 mb-3">Weight Converter</h1>
+            <div class="card p-3">
+                <form id="form" class="mb-3" action="">
+                    <div class="form-group">
+                        <label for="convert-type">Select Weight</label>
+                        <select name="" id="convert-type" class="form-control">
+                            <option value="kg-to-lbs">kg to Lbs</option>
+                            <option value="lbs-to-kg">lbs tp kg</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Enter Weight</label>
+                        <input id="weight" type="text" class="form-control" placeholder="Enter weight">
+                    </div>
+                    <input class="btn btn-dark" type="submit" value="Convert">
+                </form>
+                <div class="results"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="formula.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
