@@ -12,6 +12,7 @@ form.addEventListener('submit', (e) => {
         ui.showAlert('Please enter a input value', 'alert alert-warning');
     } else {
         if(isFinite(inputValue.value)) {
+        
             formula.convert(inputValue.value);
         } else {
             ui.showAlert('Please enter a valid number', 'alert alert-danger');
