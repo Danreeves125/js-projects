@@ -24,11 +24,18 @@ taskForm.addEventListener('submit', (e) => {
 listGroup.addEventListener('click', (e) => {
     if(e.target.parentElement.classList.contains('delete')) {
         ui.deleteTask(e.target.parentElement.parentElement);
+        
+        Storage.removeFromLocalStorage(e.target.parentElement.previousElementSibling.textContent);
+        ui.showAlert('Task Removed', 'alert alert-success');
     }
 });
 
 clearTasks.addEventListener('click', () => {
-    ui.clearAllTasks();
+    if(confirm('Are you sure you want to delete all tasks')) {
+        ui.clearAllTasks();
+        Storage.clearLocalStorage();
+        ui.showAlert('All Tasks have been deleted', 'alert alert-success');
+    }
 });
 
 
