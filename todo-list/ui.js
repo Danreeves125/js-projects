@@ -3,11 +3,7 @@ class UI {
         this.tasks = document.querySelector('.list-group');
         this.taskInput = document.querySelector('#task');
     }
-
-// <li class="list-group-item">
-//     <p>task item</p>
-// </li>
-
+    
     addTask(task) {
         // Create li element
         const li = document.createElement('li');
@@ -24,6 +20,10 @@ class UI {
         this.tasks.appendChild(li);
 
         this.clearInput();
+    }
+
+    deleteTask(item) {
+        item.remove();
     }
 
     clearInput() {
@@ -54,6 +54,10 @@ class UI {
         if(currentAlert) {
             currentAlert.remove();
         }
+    }
+
+    clearAllTasks() {
+        this.tasks.innerHTML = '';
     }
 }
 
