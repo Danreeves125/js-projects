@@ -1,4 +1,5 @@
 const ui = new UI();
+const store = new Storage();
 
 const taskForm = document.querySelector('#taskForm'),
       taskInput = document.querySelector('#task'),
@@ -6,9 +7,14 @@ const taskForm = document.querySelector('#taskForm'),
       deleteButton = document.querySelector('.delete'),
       listGroup = document.querySelector('.list-group');
 
+// Load content
+document.addEventListener('DOMContentLoaded', Storage.getAllTasks());
+
 taskForm.addEventListener('submit', (e) => {
     if(taskInput.value != '') {
         ui.addTask(taskInput.value);
+        Storage.storeInLocalStorage(taskInput.value);
+        ui.clearInput();
     } else {
         ui.showAlert('Please enter a task', 'alert alert-danger');
     }

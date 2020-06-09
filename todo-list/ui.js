@@ -18,8 +18,6 @@ class UI {
         `
 
         this.tasks.appendChild(li);
-
-        this.clearInput();
     }
 
     deleteTask(item) {
