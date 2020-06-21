@@ -7,7 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="skeleton.css">
+    <link rel="stylesheet" href="skeleton-alert.css">
     <title>List of Wanted Games</title>
+    <style>
+        .alert {
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -16,7 +22,7 @@
             <h1 style="margin-top: 15px;">Game List</h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row gameRow">
         <form id="gameForm" action="" class="form" style="margin: 0;">
             <div class="row">
                 <div class="six columns">
@@ -57,9 +63,6 @@
         </tbody>
     </table>
 </div>
-<script src="storage.js"></script>
-<script src="game.js"></script>
-<script src="ui.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

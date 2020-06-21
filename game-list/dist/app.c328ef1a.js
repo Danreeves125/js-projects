@@ -118,6 +118,13 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"game.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Game = void 0;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Game = function Game(name, genre, platform, price) {
@@ -128,23 +135,187 @@ var Game = function Game(name, genre, platform, price) {
   this.platform = platform;
   this.price = price;
 };
-},{}],"app.js":[function(require,module,exports) {
+
+exports.Game = Game;
+},{}],"ui.js":[function(require,module,exports) {
 "use strict";
 
-var _game = _interopRequireDefault(require("./game.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-document.getElementById('gameForm').addEventListener('submit', function (e) {
-  var name = document.querySelector('gameName'),
-      genre = document.querySelector('genre'),
-      platform = document.querySelector('platform'),
-      price = document.querySelector('price');
-  var game = new Game(name, genre, platform, price);
-  var ui = new UI();
-  ui.addGameToList(game);
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-},{"./game.js":"game.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+exports.UI = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var UI = /*#__PURE__*/function () {
+  function UI() {
+    _classCallCheck(this, UI);
+  }
+
+  _createClass(UI, [{
+    key: "addGameToList",
+    value: function addGameToList(game) {
+      // Get table body
+      var bookTable = document.getElementById('tableBody'); // Create row element
+
+      var tableRow = document.createElement('tr');
+      tableRow.innerHTML = "\n            <td>".concat(game.name, "</td>\n            <td>").concat(game.genre, "</td>\n            <td>").concat(game.platform, "</td>\n            <td>\xA3").concat(parseFloat(game.price).toFixed(2), "</td>\n            <td><a href=\"#\" class=\"delete\">X</a></td>\n        ");
+      bookTable.appendChild(tableRow);
+    }
+  }, {
+    key: "deleteBook",
+    value: function deleteBook(target) {
+      target.parentElement.parentElement.remove();
+    }
+  }, {
+    key: "showAlert",
+    value: function showAlert(msg, className) {
+      var _this = this;
+
+      var alert = document.createElement('div');
+      alert.className = "".concat(className);
+      alert.appendChild(document.createTextNode("".concat(msg)));
+      var row = document.querySelector('.gameRow');
+      var form = document.querySelector('#gameForm');
+      row.insertBefore(alert, form);
+      setTimeout(function () {
+        _this.clearAlert();
+      }, 2000);
+    }
+  }, {
+    key: "clearAlert",
+    value: function clearAlert() {
+      var currentAlert = document.querySelector('.alert');
+
+      if (currentAlert) {
+        currentAlert.remove();
+      }
+    }
+  }, {
+    key: "clearInputs",
+    value: function clearInputs() {
+      document.querySelector('#gameName').value = '';
+      document.querySelector('#genre').value = '';
+      document.querySelector('#platform').value = '';
+      document.querySelector('#price').value = '';
+    }
+  }]);
+
+  return UI;
+}();
+
+exports.UI = UI;
+},{}],"storage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Storage = void 0;
+
+var _ui = require("./ui");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Storage = /*#__PURE__*/function () {
+  function Storage() {
+    _classCallCheck(this, Storage);
+  }
+
+  _createClass(Storage, null, [{
+    key: "getGames",
+    value: function getGames() {
+      var games;
+
+      if (localStorage.getItem('games') === null) {
+        games = [];
+      } else {
+        games = JSON.parse(localStorage.getItem('games'));
+      }
+
+      return games;
+    }
+  }, {
+    key: "displayGames",
+    value: function displayGames() {
+      var games = Storage.getGames();
+      games.forEach(function (game) {
+        var ui = new _ui.UI();
+        ui.addGameToList(game);
+      });
+    }
+  }, {
+    key: "addGame",
+    value: function addGame(game) {
+      var games = Storage.getGames();
+      games.push(game);
+      localStorage.setItem('games', JSON.stringify(games));
+    }
+  }, {
+    key: "removeGame",
+    value: function removeGame(gameName) {
+      var games = Storage.getGames();
+      games.forEach(function (game, index) {
+        if (gameName === game.name) {
+          games.splice(index, 1);
+        }
+      });
+      localStorage.setItem('games', JSON.stringify(games));
+    }
+  }]);
+
+  return Storage;
+}();
+
+exports.Storage = Storage;
+},{"./ui":"ui.js"}],"app.js":[function(require,module,exports) {
+"use strict";
+
+var _game = require("./game");
+
+var _ui = require("./ui");
+
+var _storage = require("./storage");
+
+var ui = new _ui.UI();
+document.addEventListener('DOMContentLoaded', function () {
+  _storage.Storage.displayGames();
+});
+document.getElementById('gameForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var name = document.querySelector('#gameName').value,
+      genre = document.querySelector('#genre').value,
+      platform = document.querySelector('#platform').value,
+      price = document.querySelector('#price').value;
+
+  if (name == '' || genre == '' || platform == '' || price == '') {
+    ui.showAlert('Please fill out all fields ', 'alert alert-error');
+  } else {
+    var game = new _game.Game(name, genre, platform, price);
+    ui.addGameToList(game);
+
+    _storage.Storage.addGame(game);
+
+    ui.showAlert('Game added to list ', 'alert alert-success');
+    ui.clearInputs();
+  }
+});
+document.getElementById('tableBody').addEventListener('click', function (e) {
+  ui.deleteBook(e.target);
+
+  _storage.Storage.removeGame(e.target.parentElement.parentElement.firstElementChild.textContent);
+
+  ui.showAlert('Game removed from list ', 'alert alert-success');
+});
+},{"./game":"game.js","./ui":"ui.js","./storage":"storage.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -172,7 +343,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54773" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61438" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
