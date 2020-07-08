@@ -38,3 +38,7 @@ document.getElementById('tableBody').addEventListener('click', (e) => {
 
     ui.showAlert('Game removed from list ', 'alert alert-success');
 });
+
+document.getElementById('filter').addEventListener('keyup', (e) => {
+    ui.filterTasks(e.target);
+});

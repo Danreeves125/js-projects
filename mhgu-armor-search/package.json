@@ -1,0 +1,9 @@
+{
+  "name": "mhgu-armor-search",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "regenerator-runtime": "^0.13.5"
+  }
+}

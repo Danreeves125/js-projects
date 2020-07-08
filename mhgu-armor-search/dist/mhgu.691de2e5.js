@@ -117,33 +117,10 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"game.js":[function(require,module,exports) {
-"use strict";
+})({"mhgu.js":[function(require,module,exports) {
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Game = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Game = function Game(name, genre, platform, price) {
-  _classCallCheck(this, Game);
-
-  this.name = name;
-  this.genre = genre;
-  this.platform = platform;
-  this.price = price;
-};
-
-exports.Game = Game;
-},{}],"ui.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.UI = void 0;
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -151,191 +128,47 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var UI = /*#__PURE__*/function () {
-  function UI() {
-    _classCallCheck(this, UI);
+var Mhgu = /*#__PURE__*/function () {
+  function Mhgu() {
+    _classCallCheck(this, Mhgu);
   }
 
-  _createClass(UI, [{
-    key: "addGameToList",
-    value: function addGameToList(game) {
-      // Get table body
-      var bookTable = document.getElementById('tableBody'); // Create row element
+  _createClass(Mhgu, [{
+    key: "getArmour",
+    value: function () {
+      var _getArmour = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var response, data;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return fetch('armour.json');
 
-      var tableRow = document.createElement('tr');
-      tableRow.className = 'table-row';
-      tableRow.innerHTML = "\n            <td>".concat(game.name, "</td>\n            <td>").concat(game.genre, "</td>\n            <td>").concat(game.platform, "</td>\n            <td>\xA3").concat(parseFloat(game.price).toFixed(2), "</td>\n            <td><a href=\"#\" class=\"delete\">X</a></td>\n        ");
-      bookTable.appendChild(tableRow);
-    }
-  }, {
-    key: "filterTasks",
-    value: function filterTasks(gameText) {
-      var text = gameText.value.toLowerCase(); // console.log(gameText);
+              case 2:
+                response = _context.sent;
+                data = response.json();
+                console.log(data);
 
-      var allRows = document.querySelectorAll('.table-row');
-      allRows.forEach(function (game) {
-        var item = game.firstElementChild.textContent.toLowerCase();
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
 
-        if (item.indexOf(text) !== -1) {
-          console.log('show');
-        } else {
-          console.log('hide');
-        }
-      });
-    }
-  }, {
-    key: "deleteBook",
-    value: function deleteBook(target) {
-      target.parentElement.parentElement.remove();
-    }
-  }, {
-    key: "showAlert",
-    value: function showAlert(msg, className) {
-      var _this = this;
-
-      var alert = document.createElement('div');
-      alert.className = "".concat(className);
-      alert.appendChild(document.createTextNode("".concat(msg)));
-      var row = document.querySelector('.gameRow');
-      var form = document.querySelector('#gameForm');
-      row.insertBefore(alert, form);
-      setTimeout(function () {
-        _this.clearAlert();
-      }, 2000);
-    }
-  }, {
-    key: "clearAlert",
-    value: function clearAlert() {
-      var currentAlert = document.querySelector('.alert');
-
-      if (currentAlert) {
-        currentAlert.remove();
-      }
-    }
-  }, {
-    key: "clearInputs",
-    value: function clearInputs() {
-      document.querySelector('#gameName').value = '';
-      document.querySelector('#genre').value = '';
-      document.querySelector('#platform').value = '';
-      document.querySelector('#price').value = '';
-    }
-  }]);
-
-  return UI;
-}();
-
-exports.UI = UI;
-},{}],"storage.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Storage = void 0;
-
-var _ui = require("./ui");
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Storage = /*#__PURE__*/function () {
-  function Storage() {
-    _classCallCheck(this, Storage);
-  }
-
-  _createClass(Storage, null, [{
-    key: "getGames",
-    value: function getGames() {
-      var games;
-
-      if (localStorage.getItem('games') === null) {
-        games = [];
-      } else {
-        games = JSON.parse(localStorage.getItem('games'));
+      function getArmour() {
+        return _getArmour.apply(this, arguments);
       }
 
-      return games;
-    }
-  }, {
-    key: "displayGames",
-    value: function displayGames() {
-      var games = Storage.getGames();
-      games.forEach(function (game) {
-        var ui = new _ui.UI();
-        ui.addGameToList(game);
-      });
-    }
-  }, {
-    key: "addGame",
-    value: function addGame(game) {
-      var games = Storage.getGames();
-      games.push(game);
-      localStorage.setItem('games', JSON.stringify(games));
-    }
-  }, {
-    key: "removeGame",
-    value: function removeGame(gameName) {
-      var games = Storage.getGames();
-      games.forEach(function (game, index) {
-        if (gameName === game.name) {
-          games.splice(index, 1);
-        }
-      });
-      localStorage.setItem('games', JSON.stringify(games));
-    }
+      return getArmour;
+    }()
   }]);
 
-  return Storage;
+  return Mhgu;
 }();
-
-exports.Storage = Storage;
-},{"./ui":"ui.js"}],"app.js":[function(require,module,exports) {
-"use strict";
-
-var _game = require("./game");
-
-var _ui = require("./ui");
-
-var _storage = require("./storage");
-
-var ui = new _ui.UI();
-document.addEventListener('DOMContentLoaded', function () {
-  _storage.Storage.displayGames();
-});
-document.getElementById('gameForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var name = document.querySelector('#gameName').value,
-      genre = document.querySelector('#genre').value,
-      platform = document.querySelector('#platform').value,
-      price = document.querySelector('#price').value;
-
-  if (name == '' || genre == '' || platform == '' || price == '') {
-    ui.showAlert('Please fill out all fields ', 'alert alert-error');
-  } else {
-    var game = new _game.Game(name, genre, platform, price);
-    ui.addGameToList(game);
-
-    _storage.Storage.addGame(game);
-
-    ui.showAlert('Game added to list ', 'alert alert-success');
-    ui.clearInputs();
-  }
-});
-document.getElementById('tableBody').addEventListener('click', function (e) {
-  ui.deleteBook(e.target);
-
-  _storage.Storage.removeGame(e.target.parentElement.parentElement.firstElementChild.textContent);
-
-  ui.showAlert('Game removed from list ', 'alert alert-success');
-});
-document.getElementById('filter').addEventListener('keyup', function (e) {
-  ui.filterTasks(e.target);
-});
-},{"./game":"game.js","./ui":"ui.js","./storage":"storage.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -363,7 +196,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51903" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58271" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -539,5 +372,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","app.js"], null)
-//# sourceMappingURL=/app.c328ef1a.js.map
+},{}]},{},["../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","mhgu.js"], null)
+//# sourceMappingURL=/mhgu.691de2e5.js.map

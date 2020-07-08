@@ -1,0 +1,293 @@
+{
+    "armor": [
+        {
+            "armorName": "Hunting Armor",
+            "rarity": "1",
+            "pieces" : [
+                {
+                    "name": "Hunting Helm",
+                    "defence": {
+                        "min": 2,
+                        "max": 50
+                    },
+                    "resistances" : {
+                        "fire": "+1",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "1",
+                    "skills" : {
+                        "psychic": "+3"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunting Mail",
+                    "defence": {
+                        "min": 2,
+                        "max": 50
+                    },
+                    "resistances" : {
+                        "fire": "+1",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "0",
+                    "skills" : {
+                        "psychic": "+2"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunting Braces",
+                    "defence": {
+                        "min": 2,
+                        "max": 50
+                    },
+                    "resistances" : {
+                        "fire": "+1",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "0",
+                    "skills" : {
+                        "psychic": "+5"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunting Faulds",
+                    "defence": {
+                        "min": 2,
+                        "max": 50
+                    },
+                    "resistances" : {
+                        "fire": "+1",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "1",
+                    "skills" : {
+                        "speed-setup": "+3"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunting Greaves",
+                    "defence": {
+                        "min": 2,
+                        "max": 50
+                    },
+                    "resistances" : {
+                        "fire": "+1",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "2",
+                    "skills" : {
+                        "speed-setup": "+3"
+                    },
+                    "male": "1",
+                    "female": "1"
+                }
+            ]
+        },
+        {
+            "armorName": "Hunters Armor",
+            "rarity": "1",
+            "pieces" : [
+                {
+                    "name": "Hunter's Helm",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "0",
+                    "skills" : {
+                        "ranger": "+3",
+                        "speed-setup": "+2"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunter's Mail",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "1",
+                    "skills" : {
+                        "speed-setup": "+2"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunter's Vambraces",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "1",
+                    "skills" : {
+                        "speed-setup": "+3"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunter's Faulds",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "1",
+                    "skills" : {
+                        "ranger": "+6"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunter's Greaves",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "2",
+                    "skills" : {
+                        "ranger": "+1"
+                    },
+                    "male": "1",
+                    "female": "1"
+                }
+            ]
+        },
+        {
+            "armorName": "Bone Armor",
+            "rarity": "1",
+            "pieces" : [
+                {
+                    "name": "Bone Helm",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "-1",
+                        "dragon": "0"
+                    },
+                    "slots": "1",
+                    "skills" : {
+                        "ko": "+4"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunter's Mail",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "1",
+                    "skills" : {
+                        "speed-setup": "+2"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunter's Vambraces",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "1",
+                    "skills" : {
+                        "speed-setup": "+3"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunter's Faulds",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "1",
+                    "skills" : {
+                        "ranger": "+6"
+                    },
+                    "male": "1",
+                    "female": "1"
+                },
+                {
+                    "name": "Hunter's Greaves",
+                    "defence": "6 - 54",
+                    "resistances" : {
+                        "fire": "0",
+                        "water": "0",
+                        "thunder": "0",
+                        "ice": "0",
+                        "dragon": "0"
+                    },
+                    "slots": "2",
+                    "skills" : {
+                        "ranger": "+1"
+                    },
+                    "male": "1",
+                    "female": "1"
+                }
+            ]
+        }
+    ]
+}

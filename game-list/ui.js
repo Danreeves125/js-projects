@@ -5,6 +5,7 @@ export class UI {
 
         // Create row element
         const tableRow = document.createElement('tr');
+        tableRow.className = 'table-row';
 
         tableRow.innerHTML = `
             <td>${game.name}</td>
@@ -15,6 +16,24 @@ export class UI {
         `
 
         bookTable.appendChild(tableRow);
+    }
+
+    filterTasks(gameText) {
+        const text = gameText.value.toLowerCase();
+        // console.log(gameText);
+
+        const allRows = document.querySelectorAll('.table-row');
+
+        allRows.forEach((game) => {
+            const item = game.firstElementChild.textContent.toLowerCase();
+
+            if(item.indexOf(text) !== -1) {
+                console.log('show');
+            } else {
+                console.log('hide');
+            }
+
+        });
     }
 
     deleteBook(target) {
